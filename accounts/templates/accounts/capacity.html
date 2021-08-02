@@ -1,0 +1,22 @@
+{%  extends 'accounts/main.html' %}
+{% load static %}
+{% block content %}
+
+<!-- admins can change parking capacity here -->
+
+<div class="row">
+	<div class="col-md-6">
+		<div class="card card-body" style="background-color: #DCDCDC;">
+            <p>How many slots you want to append?</p>
+			<form action="" method="POST">
+				{% csrf_token %}
+				{{form}}
+				<input class="btn btn-info" type="submit" name="Submit">
+                <a class="btn btn-warning" href="{% url 'home' %}">Cancel</a>
+			</form>
+
+		</div>
+	</div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,80 @@
+{%  extends 'accounts/main.html' %}
+{% load static %}
+{% block content %}
+
+<!-- both users and admins can see specific account informations  -->
+
+<br>
+
+<div class="row">
+	<div class="col-md">
+		<div class="card card-body">
+			<h5>Customer:</h5>
+			<h2>{{customer.name}}</h2>
+			<hr>
+			<a class="btn btn-outline-info  btn-sm btn-block" href="{% url 'create_event' customer.id %}">Enter Car</a>
+			<a class="btn btn-outline-info  btn-sm btn-block" href="{% url 'create_event_exit' customer.id %}">Exit Car</a>
+
+		</div>
+	</div>
+
+	<div class="col-md">
+		<div class="card card-body" style="background-color:#404040;color:white">
+			<h5>Contact Information</h5>
+			<hr>
+			<p>Email:  {{customer.email}} </p>
+			<p>Phone:  {{customer.phone}}</p>
+		</div>
+	</div>
+
+	<div class="col-md">
+		<div class="card card-body"  style="background-color:#404040;color: white;">
+			<h5>Status</h5>
+			<hr>
+			<h1 style="text-align: center;padding: 10px">{{status}}</h1>
+		</div>
+	</div>
+</div>
+
+
+<br>
+<div class="row">
+	<div class="col">
+		<div class="card card-body">
+			<form method="get">
+				{{myFilter.form}}
+		    <button class="btn btn-primary" type="submit">Search</button>
+		  </form>
+		</div>
+	</div>
+
+</div>
+<br>
+
+<div class="row">
+	<div class="col-md">
+		<div class="card card-body" style="background-color: #DCDCDC">
+			<table class="table table-sm">
+				<tr>
+					<th>Event Type</th>
+					<th>Date Happened</th>
+					<th>Slot Number</th>
+
+				</tr>
+
+				{% for activity in customer_activities %}
+
+				<tr>
+					<td>{{activity.event_type}}</td>
+					<td>{{activity.date_happened}}</td>
+					<td>{{activity.slot_num}}</td>
+
+				</tr>
+				{% endfor %}
+
+			</table>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

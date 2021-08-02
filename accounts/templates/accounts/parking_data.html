@@ -1,0 +1,29 @@
+{% extends 'accounts/main.html' %}
+{% load static %}
+
+<!-- admins can see all datas in Slot table from here -->
+
+{% block content %}
+<div class="row">
+    <div class="col-md">
+        <div class="card card-body" style="background-color: #DCDCDC">
+            <table class="table table-sm">
+                <tr>
+                    <th>Customer</th>
+                    <th>Event Type</th>
+                    <th>Date Happened</th>
+                    <th>Slot Number</th>
+                </tr>
+                {% for activity in all_activities %}
+                <tr>
+                    <td>{{activity.customer}}</td>
+                    <td>{{activity.event_type}}</td>
+                    <td>{{activity.date_happened}}</td>
+                    <td>{{activity.slot_num}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock content %}

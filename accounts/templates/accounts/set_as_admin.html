@@ -1,0 +1,19 @@
+{% extends 'accounts/main.html' %}
+{% load static %}
+{% block content %}
+
+<br>
+<div class="row">
+    <div class="col-md-6">
+        <div class="card card-body">
+            <p>Do you want set "{{customer}} as admin?"</p>
+            <form action="{% url 'set_admin' customer.id %}" method="POST">
+                {% csrf_token %}
+                <a class="btn btn-warning" href="{% url 'all_customers' %}">Cancel</a>
+                <input class="btn btn-info" type="submit" name="Confirm">
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

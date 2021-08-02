@@ -1,0 +1,69 @@
+{%  extends 'accounts/main.html' %}
+{% load static %}
+{% block content %}
+
+<!-- after authentication users will move to this page -->
+
+<br>
+<div class="row">
+	<div class="col">
+		<div class="col-md">
+			<div class="card text-center text-white  mb-3" style="background-color:#404040;color:white">
+			  	<div class="card-header">
+			  		<h5 class="card-title">Your Name</h5>
+			  	</div>
+			  	<div class="card-body">
+			    	<h3 class="card-title"></h3>
+					<h3 class="card-title">{{customer.name}}</h3>
+			  	</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="col">
+		<div class="col-md">
+			<div class="card text-center text-white  mb-3" style="background-color:#404040;color:white">
+			  	<div class="card-header">
+			  		<h5 class="card-title">Your Total Enters</h5>
+			  	</div>
+			  	<div class="card-body">
+			    	<h3 class="card-title"></h3>
+					<h3 class="card-title">{{total_enters}}</h3>
+			  	</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<br>
+
+<div class="row">
+	<div class="col-md">
+		<hr>
+		<a class="btn btn-default  btn-sm btn-block" href="{% url 'customer' customer.id %}" style="background-color:#404040;color:white">Customer Profile</a>
+		<div class="card card-body" style="background-color: #DCDCDC;">
+			<table class="table table-sm">
+				<tr>
+					<th>Event Type</th>
+					<th>Date Happened</th>
+					<th>Slot Number</th>
+
+				</tr>
+
+				{% for activity in customer_activities %}
+
+				<tr>
+					<td>{{activity.event_type}}</td>
+					<td>{{activity.date_happened}}</td>
+					<td>{{activity.slot_num}}</td>
+
+				</tr>
+				{% endfor %}
+
+			</table>
+		</div>
+	</div>
+</div>
+
+{% endblock content %}

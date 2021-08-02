@@ -1,0 +1,31 @@
+{% extends 'accounts/main.html' %}
+{% load static %}
+<!-- admins can see all details of customer's accounts  and set users as admin -->
+
+{% block content %}
+
+<div class="row">
+    <div class="col-md">
+        <div class="card card-body" style="background-color: #DCDCDC">
+            <table class="table table-sm">
+                <tr>
+                    <th>name</th>
+                    <th>phone</th>
+                    <th>email</th>
+                    <th>created</th>
+                    
+                </tr>
+                {% for customer in all_customers %}
+                <tr>
+                    <td>{{customer.name}}</td>
+                    <td>{{customer.phone}}</td>
+                    <td>{{customer.email}}</td>
+                    <td>{{customer.date_created}}</td>
+                    <td><a class="btn btn-sm btn-warning" href="{% url 'set_admin' customer.id %}">Set as admin</a></td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock content %}
